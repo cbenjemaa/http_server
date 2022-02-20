@@ -7,9 +7,9 @@ RUN apk add --update sudo
 
 ARG USER=app-user
 ARG PORT=8080
+
 # Create a non-root user to run the http_server
-# RUN adduser --create-home --home-dir /app --shell /bin/sh $USER
-RUN adduser -D $USER \
+RUN adduser -D $USER -u 1337 -h /app\
         && mkdir -p /etc/sudoers.d \
         && echo "$USER ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$USER \
         && chmod 0440 /etc/sudoers.d/$USER
@@ -25,8 +25,6 @@ COPY http_server.rb .
 # This gives a signal that our web server is about to start
 # It helps with debugging
 RUN echo "Starting a Ruby http_server"
-
-ENV SERVER_PORT=$PORT
 
 EXPOSE $PORT
 
