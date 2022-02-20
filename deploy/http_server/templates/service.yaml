@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: {{ template "name" . }}
+  name: {{ template "name" . }}
+spec:
+  ports:
+    - name: http
+      port: {{ .Values.service.externalPort }}
+      protocol: TCP
+      targetPort: {{ .Values.service.internalPort }}
+  selector:
+    app: {{ template "name" . }}
+  type: LoadBalancer

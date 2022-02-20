@@ -1,0 +1,4 @@
+apiVersion: v1
+description: A Helm chart for our Simple Ruby HTTP server 
+name: http-server
+version: 0.0.1

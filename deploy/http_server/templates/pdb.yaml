@@ -1,0 +1,9 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ template "name" . }}
+spec:
+  minAvailable: {{ sub .Values.hpa.minReplicas 1 }}
+  selector:
+    matchLabels:
+      name: {{ template "name" . }}
