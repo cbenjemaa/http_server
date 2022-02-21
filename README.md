@@ -34,3 +34,12 @@ The following is the Kubernetes cluster setup
 ![Cluster setup](images/k8s-cluster.png)
 
 Minikube is used to spin it up. The `http-server` is packaged in a Helm chart and that chart is deployed with Terraform.
+
+## Future improvements
+
+- Use `ingress-dns` addons for minikube to bind to .test local domain for example.
+- Setup TLS https://minikube.sigs.k8s.io/docs/handbook/untrusted_certs/
+- Add stress test script. For example using https://docs.locust.io
+- Improve Pods scaling using a request based metrics instead of resource utilization. 
+https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/#autoscaling-on-multiple-metrics-and-custom-metrics
+- define `seccomp` profile and attached to the k8s deployment.
