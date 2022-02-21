@@ -1,4 +1,4 @@
-.PHONY: init check plan clean apply
+.PHONY: init check plan clean apply deploy destroy
 .SILENT: check
 
 SHELL:=/bin/bash
