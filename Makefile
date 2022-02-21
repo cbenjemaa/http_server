@@ -64,6 +64,7 @@ load-image: | check-image-tag check-minikube build-image
 check-docker:
 ifeq ($(DOCKER_ENGINE_STATUS),)
 	echo "- Docker Engine doesn't seem to be running"
+	exit 1
 endif
 
 check-minikube:
