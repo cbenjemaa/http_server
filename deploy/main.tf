@@ -20,7 +20,14 @@ resource "helm_release" "http-server" {
   name       = "httpserver"
   # Locally load Helm chart
   chart      = "${path.module}/http_server"
+  # It shouldn't take a long time to deploy.
+  # Fail after 60 seconds otherwise
+  timeout    = 60
   values = [
     file("${path.module}/minikube-values.yaml")
   ]
+  set {
+    name = "image.tag"
+    value = var.http-server-version
+  }
 }
